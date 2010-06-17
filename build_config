@@ -10,6 +10,10 @@
 # OptionParser is used to parse command line options
 from optparse import OptionParser
 import os
+# regex
+import re
+# debug
+import pprint
 
 parser = OptionParser(description="\
 Contact chris@sedlmayr.co.uk for any support.")
@@ -26,6 +30,15 @@ parser.add_option(
 
 # Read the template file
 file = open(options.templatelocation, 'r')
+
+# each line could contain an option and default
+for line in file:
+  res = re.search('(\[.*\])', line)
+  
+  if res:
+     print res.group()
+  else:
+     print "No match!!"
 
 # Extract the defaults that are defined, they can then be placed as defaults
 # within the parser.add_option definitions
