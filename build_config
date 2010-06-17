@@ -1,0 +1,6 @@
+#!/usr/bin/python
+
+# @desc     Based on a defined template, build_config will create an vhost 
+#           entry in a specified file.
+# @see      README for full template details
+# @author   Chris Sedlmayr catchamonkey <chris@sedlmayr.co.uk>
