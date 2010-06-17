@@ -10,6 +10,7 @@
 # OptionParser is used to parse command line options
 from optparse import OptionParser
 import os
+
 parser = OptionParser(description="\
 Contact chris@sedlmayr.co.uk for any support.")
 parser.add_option(
@@ -18,8 +19,17 @@ parser.add_option(
     action  ="store",
     help    ="The template file location", 
     type    ="string",
-    default =os.path.abspath("./vhost-template.conf")+"/"
+    default =os.path.abspath("./vhost-template.conf")
 )
+# parse the first option so we can extract shizzle from the template
+(options, args) = parser.parse_args()
+
+# Read the template file
+file = open(options.templatelocation, 'r')
+
+# Extract the defaults that are defined, they can then be placed as defaults
+# within the parser.add_option definitions
+
 parser.add_option(
     "-i", "--ip", 
     dest    ="ipaddress", 
