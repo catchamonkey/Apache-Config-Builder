@@ -4,3 +4,37 @@
 #           entry in a specified file.
 # @see      README for full template details
 # @author   Chris Sedlmayr catchamonkey <chris@sedlmayr.co.uk>
+
+# Import required libs
+
+# OptionParser is used to parse command line options
+from optparse import OptionParser
+import os
+parser = OptionParser(description="\
+Contact chris@sedlmayr.co.uk for any support.")
+parser.add_option(
+    "-t", "--template", 
+    dest    ="templatelocation", 
+    action  ="store",
+    help    ="The template file location", 
+    type    ="string",
+    default =os.path.abspath("./vhost-template.conf")+"/"
+)
+parser.add_option(
+    "-i", "--ip", 
+    dest    ="ipaddress", 
+    action  ="store",
+    help    ="The IP for the vhost", 
+    type    ="string",
+    default =False
+)   
+parser.add_option(
+    "-p", "--port", 
+    dest    ="port", 
+    action  ="store",
+    help    ="The port for the vhost and to listen on", 
+    type    ="int",
+    default =False
+)
+# parse the arguments
+(options, args) = parser.parse_args()
